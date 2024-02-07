@@ -1,0 +1,59 @@
+<div class="col-12 row">
+<div class=" col-2">
+    <div class="col-12 mt-3">
+        <input type="text" class="form-control"  (keyup)="searchAddress()" [(ngModel)]="searchText" placeholder="Adres girin">
+    </div>
+</div>
+<div class=" col-2">
+    <div class="col-12 mt-3">
+        <input type="text" class="form-control"  (keyup)="searchAddress2()" [(ngModel)]="searchText2" placeholder="Adres girin">
+    </div>
+</div>
+<div class=" col-2">
+    <div class="col-12 mt-3">
+        <input type="text" class="form-control"  (keyup)="searchAddress3()" [(ngModel)]="searchText3" placeholder="Adres girin">
+    </div>
+</div>
+<div class=" col-2">
+    <div class="col-12 mt-3">
+<button class="btn btn-primary" (click)="getRoute()">Get Route</button>
+    </div>
+</div>
+<div class=" col-2">
+    <div class="col-12 mt-3">
+<button class="btn btn-primary" (click)="clearRoutes()">Clear Route</button>
+    </div>
+</div>
+</div>
+<div class="col-12 row">
+<div class="col-2">
+<div class="col-12 row"  *ngFor="let address of addresses[0]">
+    <div class="col-12 row mt-2" style="cursor: pointer; background-color: grey;border-radius: 10px;">
+        <label style="cursor: pointer;" (click)="clickAddress(address)">{{ address.formatted_address }}</label>
+    </div>
+</div>
+</div>
+
+<div class="col-2">
+    <div class="col-12 row"  *ngFor="let address of addresses2[0]">
+        <div class="col-12 row mt-2" style="cursor: pointer; background-color: grey;border-radius: 10px;">
+            <label style="cursor: pointer;" (click)="clickAddress(address)">{{ address.formatted_address }}</label>
+        </div>
+    </div>
+    </div>
+    <div class="col-2">
+        <div class="col-12 row"  *ngFor="let address of addresses3[0]">
+            <div class="col-12 row mt-2" style="cursor: pointer; background-color: grey;border-radius: 10px;">
+                <label style="cursor: pointer;" (click)="clickAddress(address)">{{ address.formatted_address }}</label>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+<div class="app-page">
+    <div #map id="map-canvas"></div>
+    <div class="map-loader-container" *ngIf="!mapLoaded">
+        <div class="map-loader"></div>
+    </div>
+</div>
