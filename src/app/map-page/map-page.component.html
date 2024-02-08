@@ -5,52 +5,51 @@
     </div>
 </div>
 <div class=" col-2">
-    <div class="col-12 mt-3">
-        <input type="text" class="form-control"  (keyup)="searchAddress2()" [(ngModel)]="searchText2" placeholder="Adres girin">
-    </div>
-</div>
-<div class=" col-2">
-    <div class="col-12 mt-3">
-        <input type="text" class="form-control"  (keyup)="searchAddress3()" [(ngModel)]="searchText3" placeholder="Adres girin">
-    </div>
-</div>
-<div class=" col-2">
-    <div class="col-12 mt-3">
+    <div class="col-12 mt-3" style="margin-left: 3rem;">
 <button class="btn btn-primary" (click)="getRoute()">Get Route</button>
     </div>
 </div>
-<div class=" col-2">
-    <div class="col-12 mt-3">
-<button class="btn btn-primary" (click)="clearRoutes()">Clear Route</button>
+<div class=" col-2 mt-3" style="border: 2px solid white; background-color: #455560;border-radius: 10px;">
+    <div class="col-12 row" *ngFor="let ad of listAddress">
+        <label style="color: white;">{{ad}}</label>
     </div>
+</div>
+<div class=" col-1 mt-3">
+    <div class="col-12 row">
+            <button class="btn btn-danger" (click)="adressClear()">clear</button>    
+            </div>
+</div>
+<div class=" col-1 mt-4">
+    <div class="col-12 row">
+        <div class="form-check form-switch">
+            <label>Traffic</label>
+            <input class="form-check-input" [(ngModel)]="traffic" (change)="showTraffic()" type="checkbox" id="flexSwitchCheckChecked">
+          </div>    
+        </div>
+</div>
+<div class=" col-2 mt-4">
+    <div class="col-12 row">
+        <div class="form-check form-switch">
+            <label>Alternative Routes</label>
+            <input class="form-check-input" [(ngModel)]="alternativeRoute" (change)="getRoute()" type="checkbox" id="flexSwitchCheckChecked">
+          </div>    
+        </div>
 </div>
 </div>
 <div class="col-12 row">
-<div class="col-2">
+<div class="col-3">
 <div class="col-12 row"  *ngFor="let address of addresses[0]">
-    <div class="col-12 row mt-2" style="cursor: pointer; background-color: grey;border-radius: 10px;">
-        <label style="cursor: pointer;" (click)="clickAddress(address)">{{ address.formatted_address }}</label>
+    <div class="col-8 row mt-2" style="cursor: pointer; background-color: #455560;border-radius: 10px;">
+        <label style="cursor: pointer;color: white;">{{ address.formatted_address }}</label>
+    </div>
+    <div class="col-4 row mt-2" style="cursor: pointer;margin-left: 1rem;">
+        <button class="btn btn-primary"  (click)="clickAddress(address)">Add</button>
     </div>
 </div>
 </div>
-
-<div class="col-2">
-    <div class="col-12 row"  *ngFor="let address of addresses2[0]">
-        <div class="col-12 row mt-2" style="cursor: pointer; background-color: grey;border-radius: 10px;">
-            <label style="cursor: pointer;" (click)="clickAddress(address)">{{ address.formatted_address }}</label>
-        </div>
+<div class="col-3">
+</div>
     </div>
-    </div>
-    <div class="col-2">
-        <div class="col-12 row"  *ngFor="let address of addresses3[0]">
-            <div class="col-12 row mt-2" style="cursor: pointer; background-color: grey;border-radius: 10px;">
-                <label style="cursor: pointer;" (click)="clickAddress(address)">{{ address.formatted_address }}</label>
-            </div>
-        </div>
-        </div>
-    </div>
-
-
 <div class="app-page">
     <div #map id="map-canvas"></div>
     <div class="map-loader-container" *ngIf="!mapLoaded">
